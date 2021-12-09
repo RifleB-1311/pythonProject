@@ -42,16 +42,16 @@ class Course:
         result= "Tên ngành học: "+self.coursename + "Số tín chỉ: "+ str(self.creditnumber) + "Tên giảng viên: "+ self.lecturers
         return result
 
-class Fee:
-    feename: str
-    feeamount: int
+class Tuition:
+    tuitionname: str
+    tuitionamount: int
     payment: str
-    def __init__(self,feename,feeamount,payment):
-        self.feename=feename
-        self.feeamount=feeamount
+    def __init__(self,tuitionname,tuitionamount,payment):
+        self.tuitionname=tuitionname
+        self.tuitionamount=tuitionamount
         self.payment=payment
-    def outputFee(self):
-        result= "Tên học phí: "+self.feename +"Học phí phải đóng(triệu đồng): " + str(self.feeamount) +"Cách thanh toán: "+ self.payment
+    def outputTuition(self):
+        result= "Tên học phí: "+self.tuitionname +"Học phí phải đóng(triệu đồng): " + str(self.tuitionamount) +"Cách thanh toán: "+ self.payment
         return result
 
 class Payment:
@@ -82,7 +82,7 @@ class Bank(Payment):
 class Student:
     mark: list[Mark]
     course: list[Course]
-    fee: list[Fee]
+    tuition: list[Tuition]
     Name: str
     Phone: str
     Email: str
@@ -90,12 +90,12 @@ class Student:
     Address: str
     Marks: float
     Courses: str
-    Fee: int
-    def __init__(self,name,phone,email,id,address,marks,courses,fee):
+    Tuition: int
+    def __init__(self,name,phone,email,id,address,marks,courses,tuition):
         self.studentmanage=[]
         self.marks=[]
         self.courses=[]
-        self.fee=[]
+        self.tuition=[]
         self.Name=name
         self.Phone=phone
         self.Email=email
@@ -103,15 +103,15 @@ class Student:
         self.Address=address
         self.Marks=marks
         self.Courses=courses
-        self.Fee=fee
+        self.Tuition=tuition
     def addMark(self, diem : Mark) -> None:
         self.mark.append(diem)
 
     def addCourses(self, nganhhoc : Course) -> None:
         self.courses.append(nganhhoc)
 
-    def addFee(self,hocphi : Fee) -> None:
-        self.fee.append(hocphi)
+    def addTuition(self,hocphi : Tuition) -> None:
+        self.tuition.append(hocphi)
 
     def outputStudent(self):
         result= "Tên sinh viên:"+ self.Name + "Số điện thoại: "+self.Phone +"Email: "+self.Email+ "Mã sinh viên: " +self.ID +"Địa chỉ: "+self.Address
@@ -121,8 +121,8 @@ class Student:
         for nganhhoc in self.courses:
             result+= "Ngành học:"+nganhhoc.outputCourse()
             return  result
-        for hocphi in self.fee:
-            result+= "Các loại học phí: "+hocphi.outputFee()
+        for hocphi in self.tuition:
+            result+= "Các loại học phí: "+hocphi.outputTuition()
             return result
 
 class StudentManage:
